@@ -33,9 +33,14 @@ def update_hosts_file():
             # virtual_host = output[start:end].split("=")[1]
             virtual_host = c.name
             # ip = c.exec_run("hostname -i").output.decode("utf-8").split("\n")[0]
-            ip = c.attrs["NetworkSettings"]["IPAddress"]
-            if ip == "":
-                continue
+            ip = ""
+            networks = list(c.attrs["NetworkSettings"]["Networks"].keys())
+            for network in networks:
+                if c.attrs["NetworkSettings"]["Networks"][network]["IPAddress"] == "":
+                    # Empty address means in host mode
+                    ip += "127.0.0.1 "
+                else:
+                    ip += "{} ".format(str(c.attrs["NetworkSettings"]["Networks"][network]["IPAddress"]))
 
             add = True
             for h in hosts:
