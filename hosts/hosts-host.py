@@ -24,12 +24,12 @@ def update_hosts_file():
 
     hosts = []
     for c in containers:
-        env = c.exec_run("env")
-        output = env.output.decode("utf-8")
+        # env = c.exec_run("env")
+        # output = env.output.decode("utf-8")
         # start = output.find("VIRTUAL_HOST")
         start = 1
         if start >= 0:
-            end = output[start:].find("\n") + start
+            # end = output[start:].find("\n") + start
             # virtual_host = output[start:end].split("=")[1]
             virtual_host = c.name
             # ip = c.exec_run("hostname -i").output.decode("utf-8").split("\n")[0]
