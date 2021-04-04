@@ -11,7 +11,7 @@ def log(message):
 
 
 def check_host(text, host):
-    regex = r"\s" + host
+    regex = r"\s" + host + "$"
     flags = re.I
     founds = re.compile(regex, flags).findall(text)
     return len(founds) > 0
@@ -34,6 +34,8 @@ def update_hosts_file():
             virtual_host = c.name
             # ip = c.exec_run("hostname -i").output.decode("utf-8").split("\n")[0]
             ip = c.attrs["NetworkSettings"]["IPAddress"]
+            if ip == "":
+                continue
 
             add = True
             for h in hosts:
