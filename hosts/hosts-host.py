@@ -32,7 +32,8 @@ def update_hosts_file():
             end = output[start:].find("\n") + start
             # virtual_host = output[start:end].split("=")[1]
             virtual_host = c.name
-            ip = c.exec_run("hostname -i").output.decode("utf-8").split("\n")[0]
+            # ip = c.exec_run("hostname -i").output.decode("utf-8").split("\n")[0]
+            ip = c.attrs["NetworkSettings"]["IPAddress"]
 
             add = True
             for h in hosts:
