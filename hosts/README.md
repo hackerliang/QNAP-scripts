@@ -10,3 +10,5 @@ docker run -d --name hosts \
     -v /var/run/docker.sock:/var/run/docker.sock \
     -v /etc/hosts:/etc/hosts-host hackerliang/hosts
 ```
+
+This is a modified version of https://github.com/jaswdr/dockers/tree/master/docker-image-hosts
