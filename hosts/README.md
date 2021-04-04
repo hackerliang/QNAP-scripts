@@ -7,6 +7,7 @@ Start a new container passing your local `docker.sock` file
 
 ```bash
 docker run -d --name hosts \
+    --restart=always \
     -v /var/run/docker.sock:/var/run/docker.sock \
     -v /etc/hosts:/etc/hosts-host hackerliang/hosts
 ```
