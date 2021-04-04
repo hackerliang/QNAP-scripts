@@ -37,6 +37,7 @@ while True:
             print("{} Restart docker container success: {}.".format(time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()), config["CONTAINER"]["NAME"]))
         else:
             print("{} Restart docker container failed: {}.".format(time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()), cmd))
+        response.close()
     except Exception as e:
         print(e)
     print("{} Sleep for {}s".format(time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()), config["PROVIDER"]["UPDATEINTERVAL"]))
