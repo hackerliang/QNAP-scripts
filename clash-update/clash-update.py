@@ -40,11 +40,10 @@ while True:
         """)
         if cmd == 0:
             print(
-                "{} Restart docker container success: {}.".format(time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()),
-                                                                  config["CONTAINER"]["NAME"]))
+                "{} Clash: reload config success.".format(time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())))
         else:
-            print("{} Restart docker container failed: {}.".format(time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()),
-                                                                   cmd))
+            print(
+                "{} Clash: reload config failed {}.".format(time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()), cmd))
         response.close()
     except Exception as e:
         print(e)
