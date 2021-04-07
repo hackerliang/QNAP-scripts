@@ -32,7 +32,13 @@ while True:
         f.write(con[num:])
         f.close()
         print("{} Save config success.".format(time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())))
-        cmd = os.system('curl -s --unix-socket /var/run/docker.sock -X POST http://localhost/v1.41/containers/{}/restart'.format(config["CONTAINER"]["NAME"]))
+        cmd = os.system("""
+        wget --no-check-certificate --quiet --method PUT \
+              --timeout=5 \
+              --header 'Authorization: Bearer """ + config["SETTINGS"]["SECRET"] + """' \
+              --header 'Content-Type: application/json' \
+              --body-data '{"path": "/root/.config/clash/config.yaml"}' '""" + config["SETTINGS"]["URL"] + """/configs'
+        """)
         if cmd == 0:
             print("{} Restart docker container success: {}.".format(time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()), config["CONTAINER"]["NAME"]))
         else:

@@ -9,15 +9,20 @@ The file name is config.yaml
 **(You must create the blank file first by yourself `touch config.yaml`)**
 
 Then you can run the **clash-update** container,
-remember to change the ([PROVIDER]: url) in clash-update.ini
+1. Change the ([PROVIDER]: url) in clash-update.ini
 to your clash subscription link.
+   
+2. Change the ([CONTAINER]: url) in clash-update.ini
+to your clash RESTFUL url
+   
+3. Change the ([CONTAINER]: secret) in clash-update.ini
+to your clash pass
 
 Then run the container by:
 ```bash
 docker run --name clash-update -d \
     -v /path/to/clash-update.ini:/clash-update.ini \
     -v /path/to/config.yaml:/config.yaml \
-    -v /var/run/docker.sock:/var/run/docker.sock \
     --restart=always \
     --cpus=".5" \
     --memory=512m \
@@ -26,9 +31,6 @@ docker run --name clash-update -d \
 
 After this, you can run the clash core by:
 
-**IMPORTANT**
-The name of the clash container must be the same with
-the name you write in *clash-update.ini* in [CONTAINER] tab
 
 ```bash
 docker run -d --name clash \
