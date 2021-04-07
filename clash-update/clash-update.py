@@ -34,9 +34,9 @@ while True:
         cmd = os.system("""
         wget --no-check-certificate --quiet --method PUT \
               --timeout=5 \
-              --header 'Authorization: Bearer """ + config["SETTINGS"]["SECRET"] + """' \
+              --header 'Authorization: Bearer """ + config["CLASH"]["SECRET"] + """' \
               --header 'Content-Type: application/json' \
-              --body-data '{"path": "/root/.config/clash/config.yaml"}' '""" + config["SETTINGS"]["URL"] + """/configs'
+              --body-data '{"path": "/root/.config/clash/config.yaml"}' '""" + config["CLASH"]["URL"] + """/configs'
         """)
         if cmd == 0:
             print(

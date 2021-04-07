@@ -12,10 +12,10 @@ Then you can run the **clash-update** container,
 1. Change the ([PROVIDER]: url) in clash-update.ini
 to your clash subscription link.
    
-2. Change the ([CONTAINER]: url) in clash-update.ini
+2. Change the ([CLASH]: url) in clash-update.ini
 to your clash RESTFUL url
    
-3. Change the ([CONTAINER]: secret) in clash-update.ini
+3. Change the ([CLASH]: secret) in clash-update.ini
 to your clash pass
 
 Then run the container by:
